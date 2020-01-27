@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 import {uniqueId} from "../../util/todo";
 
-let initialState = {title:''};
+let initialState = {title:'' , done:false };
 class TodoFrom extends Component {
     constructor(props){
         super(props);
         this.state={
-            title: ''
+            title: '',
+            done: false,
         };
 
         this.updateTodo = this.updateTodo.bind(this)
@@ -14,7 +15,7 @@ class TodoFrom extends Component {
 
    updateTodo(e){
         e.preventDefault();
-        this.setState({title: e.target.value});
+        this.setState({title: e.target.value, done: false});
     };
 
     onSubmit(){
@@ -22,7 +23,6 @@ class TodoFrom extends Component {
         this.props.receiveTodo(todo);
         this.setState(initialState);
     }
-
 
     render(){
         return(

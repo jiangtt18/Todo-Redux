@@ -90,17 +90,20 @@
 /*!******************************************!*\
   !*** ./frontend/actions/todo_actions.js ***!
   \******************************************/
-/*! exports provided: RECEIVE_TODOS, RECEIVE_TODO, receiveTodos, receiveTodo */
+/*! exports provided: RECEIVE_TODOS, RECEIVE_TODO, DELETE_TODO, receiveTodos, receiveTodo, deleteTodo */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_TODOS", function() { return RECEIVE_TODOS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_TODO", function() { return RECEIVE_TODO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_TODO", function() { return DELETE_TODO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveTodos", function() { return receiveTodos; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveTodo", function() { return receiveTodo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteTodo", function() { return deleteTodo; });
 var RECEIVE_TODOS = 'RECEIVE_TODOS';
 var RECEIVE_TODO = 'RECEIVE_TODO';
+var DELETE_TODO = 'DELETE_TODO';
 var receiveTodos = function receiveTodos(todos) {
   return {
     type: RECEIVE_TODOS,
@@ -111,6 +114,12 @@ var receiveTodo = function receiveTodo(todo) {
   return {
     type: RECEIVE_TODO,
     todo: todo
+  };
+};
+var deleteTodo = function deleteTodo(id) {
+  return {
+    type: DELETE_TODO,
+    id: id
   };
 };
 
@@ -200,7 +209,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 var initialState = {
-  title: ''
+  title: '',
+  done: false
 };
 
 var TodoFrom =
@@ -215,7 +225,8 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(TodoFrom).call(this, props));
     _this.state = {
-      title: ''
+      title: '',
+      done: false
     };
     _this.updateTodo = _this.updateTodo.bind(_assertThisInitialized(_this));
     return _this;
@@ -226,7 +237,8 @@ function (_Component) {
     value: function updateTodo(e) {
       e.preventDefault();
       this.setState({
-        title: e.target.value
+        title: e.target.value,
+        done: false
       });
     }
   }, {
@@ -276,20 +288,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _todo_list_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo_list_item */ "./frontend/components/todos/todo_list_item.jsx");
 /* harmony import */ var _todo_form__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./todo_form */ "./frontend/components/todos/todo_form.jsx");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
 
 var TodoList = function TodoList(_ref) {
   var todos = _ref.todos,
-      receiveTodo = _ref.receiveTodo;
+      receiveTodo = _ref.receiveTodo,
+      deleteTodo = _ref.deleteTodo;
+
+  var onChange = function onChange(e, todo) {
+    // Note: do not use prevnetDefault. make checkbox unchecked
+    // e.preventDefault();
+    e.stopPropagation();
+    var status = {
+      done: e.target.checked
+    };
+    debugger;
+    receiveTodo(_objectSpread({}, todo, {}, status));
+  };
+
   var list = todos.map(function (todo, idx) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       key: "todo-".concat(idx)
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todo_list_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      deleteTodo: deleteTodo,
+      onChange: onChange,
       todo: todo
     }));
   });
+  debugger;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todo_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
     receiveTodo: receiveTodo
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, list));
@@ -327,6 +361,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     receiveTodo: function receiveTodo(todo) {
       return dispatch(Object(_actions_todo_actions__WEBPACK_IMPORTED_MODULE_2__["receiveTodo"])(todo));
+    },
+    deleteTodo: function deleteTodo(id) {
+      return dispatch(Object(_actions_todo_actions__WEBPACK_IMPORTED_MODULE_2__["deleteTodo"])(id));
     }
   };
 };
@@ -349,8 +386,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var TodoListItem = function TodoListItem(_ref) {
-  var todo = _ref.todo;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, todo.title);
+  var todo = _ref.todo,
+      deleteTodo = _ref.deleteTodo,
+      _onChange = _ref.onChange;
+  // Warning: do not put onChange method here. it will only render return below. it will not rerender the
+  // the global state, and hence todo on line 8 points to the unupdated todo.
+  // move onChange to parent component will force parent and its children to rerender
+  // this is advantage of using redux.
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "checkbox",
+    name: todo.title,
+    checked: todo.done,
+    onChange: function onChange(e) {
+      return _onChange(e, todo);
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, todo.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    onClick: function onClick() {
+      return deleteTodo(todo.id);
+    }
+  }, "Delete"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (TodoListItem);
@@ -404,10 +458,12 @@ var allTodos = function allTodos(state) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_todo_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/todo_actions */ "./frontend/actions/todo_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 var todoReducer = function todoReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
 
@@ -424,8 +480,14 @@ var todoReducer = function todoReducer() {
     case _actions_todo_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_TODO"]:
       var newTodo = action.todo;
       var id = newTodo.id;
-      var stateDup = Object.assign({}, initialState);
-      stateDup[id] = newTodo;
+      return Object.assign({}, state, _defineProperty({}, id, newTodo));
+      break;
+
+    case _actions_todo_actions__WEBPACK_IMPORTED_MODULE_0__["DELETE_TODO"]:
+      var deleteId = action.id;
+      var result = {};
+      var stateDup = Object.assign({}, state);
+      delete stateDup[deleteId];
       return stateDup;
       break;
 
