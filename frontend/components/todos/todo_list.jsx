@@ -1,17 +1,24 @@
 import React from 'react';
 import TodoListItem  from "./todo_list_item";
-const TodoList = ({todos}) => {
+import TodoFrom from './todo_form';
+
+const TodoList = ({todos, receiveTodo}) => {
     const list =  todos.map((todo, idx) => {
         return(
-            <ul key={`todo-${idx}`}>
+            <li key={`todo-${idx}`}>
                 <TodoListItem
                     todo={todo}
                 />
-            </ul>
+            </li>
         )
     });
+    return (
+        <div>
+            <TodoFrom receiveTodo={receiveTodo}/>
+            <ul>{list}</ul>
+        </div>
 
-    return list;
+    )
 };
 
 export default TodoList;
