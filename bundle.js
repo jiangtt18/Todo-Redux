@@ -90,7 +90,7 @@
 /*!*******************************************!*\
   !*** ./frontend/actions/steps_actions.js ***!
   \*******************************************/
-/*! exports provided: RECEIVE_STEPS, RECEIVE_STEP, REMOVE_STEP, receive_steps, receive_step, remove_step */
+/*! exports provided: RECEIVE_STEPS, RECEIVE_STEP, REMOVE_STEP, receiveSteps, receiveStep, removeStep */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98,25 +98,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_STEPS", function() { return RECEIVE_STEPS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_STEP", function() { return RECEIVE_STEP; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_STEP", function() { return REMOVE_STEP; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receive_steps", function() { return receive_steps; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receive_step", function() { return receive_step; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "remove_step", function() { return remove_step; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSteps", function() { return receiveSteps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveStep", function() { return receiveStep; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeStep", function() { return removeStep; });
 var RECEIVE_STEPS = 'RECEIVE_STEPS';
 var RECEIVE_STEP = 'RECEIVE_STEP';
 var REMOVE_STEP = 'REMOVE_STEP';
-var receive_steps = function receive_steps(steps) {
+var receiveSteps = function receiveSteps(steps) {
   return {
     type: RECEIVE_STEPS,
     steps: steps
   };
 };
-var receive_step = function receive_step(step) {
+var receiveStep = function receiveStep(step) {
   return {
     type: RECEIVE_STEP,
     step: step
   };
 };
-var remove_step = function remove_step(id) {
+var removeStep = function removeStep(id) {
   return {
     type: REMOVE_STEP,
     id: id
@@ -212,6 +212,25 @@ var Root = function Root(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Root);
+
+/***/ }),
+
+/***/ "./frontend/components/todos/todo_detail_view.jsx":
+/*!********************************************************!*\
+  !*** ./frontend/components/todos/todo_detail_view.jsx ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var TodoDetailView = function TodoDetailView() {};
+
+/* harmony default export */ __webpack_exports__["default"] = (TodoDetailView);
 
 /***/ }),
 
@@ -362,7 +381,6 @@ var TodoList = function TodoList(_ref) {
       todo: todo
     }));
   });
-  debugger;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_todo_form__WEBPACK_IMPORTED_MODULE_2__["default"], {
     receiveTodo: receiveTodo
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, list));
@@ -416,9 +434,99 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   !*** ./frontend/components/todos/todo_list_item.jsx ***!
   \******************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/tingtingjiang/Desktop/interview/js/practices/frontend/components/todos/todo_list_item.jsx: Support for the experimental syntax 'classProperties' isn't currently enabled (12:17):\n\n\u001b[0m \u001b[90m 10 | \u001b[39m    }\u001b[0m\n\u001b[0m \u001b[90m 11 | \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 12 | \u001b[39m    updateState \u001b[33m=\u001b[39m (e) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 13 | \u001b[39m        e\u001b[33m.\u001b[39mpreventDefault()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 14 | \u001b[39m        \u001b[36mreturn\u001b[39m (e) \u001b[33m=>\u001b[39m {\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msetState((prevstate) \u001b[33m=>\u001b[39m {\u001b[36mreturn\u001b[39m {detail\u001b[33m:\u001b[39m \u001b[33m!\u001b[39mprevstate}})}\u001b[0m\n\u001b[0m \u001b[90m 15 | \u001b[39m    }\u001b[33m;\u001b[39m\u001b[0m\n\nAdd @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.\n    at Object.raise (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:7013:17)\n    at Object.expectPlugin (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:8389:18)\n    at Object.parseClassProperty (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:11665:12)\n    at Object.pushClassProperty (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:11627:30)\n    at Object.parseClassMemberWithIsStatic (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:11560:14)\n    at Object.parseClassMember (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:11497:10)\n    at /Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:11452:14\n    at Object.withTopicForbiddingContext (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:10533:14)\n    at Object.parseClassBody (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:11429:10)\n    at Object.parseClass (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:11403:22)\n    at Object.parseStatementContent (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:10700:21)\n    at Object.parseStatement (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:10658:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:11234:25)\n    at Object.parseBlockBody (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:11221:10)\n    at Object.parseTopLevel (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:10589:10)\n    at Object.parse (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:12192:10)\n    at parse (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:12243:38)\n    at parser (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/core/lib/parser/index.js:54:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/core/lib/transformation/normalize-file.js:93:38)\n    at normalizeFile.next (<anonymous>)\n    at run (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/core/lib/transformation/index.js:31:50)\n    at run.next (<anonymous>)\n    at Function.transform (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/core/lib/transform.js:27:41)\n    at transform.next (<anonymous>)\n    at step (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/gensync/index.js:254:32)\n    at /Users/tingtingjiang/Desktop/interview/js/practices/node_modules/gensync/index.js:266:13\n    at async.call.result.err.err (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/gensync/index.js:216:11)\n    at processTicksAndRejections (internal/process/task_queues.js:97:5)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _todo_detail_view__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo_detail_view */ "./frontend/components/todos/todo_detail_view.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var TodoListItem =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(TodoListItem, _Component);
+
+  function TodoListItem(props) {
+    var _this;
+
+    _classCallCheck(this, TodoListItem);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TodoListItem).call(this, props));
+    _this.state = {
+      detail: false
+    };
+    return _this;
+  }
+
+  _createClass(TodoListItem, [{
+    key: "updateState",
+    value: function updateState(e) {
+      var _this2 = this;
+
+      e.preventDefault();
+      return function (e) {
+        _this2.setState(function (prevstate) {
+          return {
+            detail: !prevstate
+          };
+        });
+      };
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      // Warning: do not put onChange method here. it will only render return below. it will not rerender the
+      // the global state, and hence todo on line 8 points to the unupdated todo.
+      // move onChange to parent component will force parent and its children to rerender
+      // this is advantage of using redux.
+      var _this$props = this.props,
+          todo = _this$props.todo,
+          deleteTodo = _this$props.deleteTodo,
+          _onChange = _this$props.onChange;
+      var detail = this.state.detail;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "checkbox",
+        name: todo.title,
+        checked: todo.done,
+        onChange: function onChange(e) {
+          return _onChange(e, todo);
+        }
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: this.updateState
+      }, todo.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        onClick: function onClick() {
+          return deleteTodo(todo.id);
+        }
+      }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Delete")));
+    }
+  }]);
+
+  return TodoListItem;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (TodoListItem);
 
 /***/ }),
 
@@ -483,7 +591,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 var stepsReducer = function stepsReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : sample.steps;
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
   var nextState = {};
@@ -504,10 +612,12 @@ var stepsReducer = function stepsReducer() {
       nextState = Object.assign({}, state);
       delete nextState[action.id];
       return nextState;
+
+    default:
+      return state;
   }
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (stepsReducer);
 var sample = {
   todos: {
     1: {
@@ -523,17 +633,18 @@ var sample = {
       id: 1,
       title: 'walk to store',
       done: false,
-      todo_id: 1
+      todoId: 1
     },
     2: {
       // this is the step with id = 2
       id: 2,
       title: 'buy soap',
       done: false,
-      todo_id: 1
+      todoId: 1
     }
   }
 };
+/* harmony default export */ __webpack_exports__["default"] = (stepsReducer);
 
 /***/ }),
 
@@ -552,7 +663,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 var todoReducer = function todoReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
 
@@ -639,11 +750,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
-/* harmony import */ var _actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./actions/todo_actions */ "./frontend/actions/todo_actions.js");
+/* harmony import */ var _actions_steps_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./actions/steps_actions */ "./frontend/actions/steps_actions.js");
 /* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./reducers/selectors */ "./frontend/reducers/selectors.js");
 /* harmony import */ var _frontend_components_root__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../frontend/components/root */ "./frontend/components/root.jsx");
 
 
+ // import {receiveTodo, receiveTodos} from "./actions/todo_actions";
 
 
 
@@ -652,9 +764,10 @@ document.addEventListener('DOMContentLoaded', function () {
   var root = document.getElementById('content');
   var store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
   window.store = store;
-  window.receiveTodo = _actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__["receiveTodo"];
-  window.receiveTodos = _actions_todo_actions__WEBPACK_IMPORTED_MODULE_3__["receiveTodos"];
-  window.allTodos = _reducers_selectors__WEBPACK_IMPORTED_MODULE_4__["allTodos"];
+  window.receiveStep = _actions_steps_actions__WEBPACK_IMPORTED_MODULE_3__["receiveStep"];
+  window.receiveSteps = _actions_steps_actions__WEBPACK_IMPORTED_MODULE_3__["receiveSteps"];
+  window.removeStep = _actions_steps_actions__WEBPACK_IMPORTED_MODULE_3__["removeStep"];
+  window.stepsByTodoId = _reducers_selectors__WEBPACK_IMPORTED_MODULE_4__["stepsByTodoId"];
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_frontend_components_root__WEBPACK_IMPORTED_MODULE_5__["default"], {
     store: store
   }), root);

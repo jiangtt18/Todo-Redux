@@ -9,7 +9,7 @@ class TodoListItem extends Component {
         }
     }
 
-    updateState = (e) => {
+    updateState(e){
         e.preventDefault();
         return (e) => {this.setState((prevstate) => {return {detail: !prevstate}})}
     };
@@ -25,7 +25,7 @@ class TodoListItem extends Component {
             <div>
                 <span><input type='checkbox' name={todo.title} checked={todo.done} onChange={(e) => onChange(e, todo)}/></span>
                 <span onClick={this.updateState}>{todo.title}</span>
-                {detail && <TodoDetailView />}
+                {/*{detail && <TodoDetailView />}*/}
                 <span onClick={() => deleteTodo(todo.id)}> <button>Delete</button></span>
             </div>
         );

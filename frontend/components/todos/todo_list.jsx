@@ -23,8 +23,7 @@ const TodoList = ({todos, receiveTodo, deleteTodo}) => {
             </li>
         )
     });
-
-    debugger
+    
     return (
         <div>
             <TodoFrom receiveTodo={receiveTodo}/>

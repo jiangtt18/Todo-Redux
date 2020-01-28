@@ -1,6 +1,6 @@
 import {RECEIVE_STEPS, REMOVE_STEP, RECEIVE_STEP} from "../actions/steps_actions";
 
-const stepsReducer = (state={}, action) => {
+const stepsReducer = (state = sample.steps, action) => {
     Object.freeze(state);
     let nextState = {};
     switch(action.type){
@@ -15,10 +15,10 @@ const stepsReducer = (state={}, action) => {
             nextState = Object.assign({}, state);
             delete nextState[action.id];
             return nextState;
+        default:
+            return state;
     }
 };
-
-export default stepsReducer;
 
 const sample = {
     todos: {
@@ -34,13 +34,16 @@ const sample = {
             id: 1,
             title: 'walk to store',
             done: false,
-            todo_id: 1
+            todoId: 1
         },
         2: { // this is the step with id = 2
             id: 2,
             title: 'buy soap',
             done: false,
-            todo_id: 1
+            todoId: 1
         }
     }
 };
+
+export default stepsReducer;
+

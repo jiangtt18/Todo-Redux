@@ -2,21 +2,21 @@ export const RECEIVE_STEPS = 'RECEIVE_STEPS';
 export const RECEIVE_STEP = 'RECEIVE_STEP';
 export const REMOVE_STEP = 'REMOVE_STEP';
 
-export const receive_steps = (steps) => {
+export const receiveSteps = (steps) => {
     return({
         type: RECEIVE_STEPS,
         steps: steps,
     })
 };
 
-export const receive_step = (step) => {
+export const receiveStep = (step) => {
     return ({
         type: RECEIVE_STEP,
         step: step,
     })
 };
 
-export const remove_step = (id) => {
+export const removeStep = (id) => {
     return ({
         type: REMOVE_STEP,
         id: id,
