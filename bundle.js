@@ -404,7 +404,7 @@ var TodoListItem = function TodoListItem(_ref) {
     onClick: function onClick() {
       return deleteTodo(todo.id);
     }
-  }, "Delete"));
+  }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Delete")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (TodoListItem);

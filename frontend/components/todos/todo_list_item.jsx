@@ -9,7 +9,7 @@ const TodoListItem = ({todo, deleteTodo, onChange}) => {
         <div>
             <span><input type='checkbox' name={todo.title} checked={todo.done} onChange={(e) => onChange(e, todo)}/></span>
             <span>{todo.title}</span>
-            <span onClick={() => deleteTodo(todo.id)}>Delete</span>
+            <span onClick={() => deleteTodo(todo.id)}> <button>Delete</button></span>
         </div>
     )
 };
