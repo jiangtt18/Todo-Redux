@@ -23,7 +23,7 @@ const TodoList = ({todos, receiveTodo, deleteTodo}) => {
             </li>
         )
     });
-    
+
     return (
         <div>
             <TodoFrom receiveTodo={receiveTodo}/>
