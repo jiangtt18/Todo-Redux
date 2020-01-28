@@ -86,6 +86,45 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/steps_actions.js":
+/*!*******************************************!*\
+  !*** ./frontend/actions/steps_actions.js ***!
+  \*******************************************/
+/*! exports provided: RECEIVE_STEPS, RECEIVE_STEP, REMOVE_STEP, receive_steps, receive_step, remove_step */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_STEPS", function() { return RECEIVE_STEPS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_STEP", function() { return RECEIVE_STEP; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_STEP", function() { return REMOVE_STEP; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receive_steps", function() { return receive_steps; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receive_step", function() { return receive_step; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "remove_step", function() { return remove_step; });
+var RECEIVE_STEPS = 'RECEIVE_STEPS';
+var RECEIVE_STEP = 'RECEIVE_STEP';
+var REMOVE_STEP = 'REMOVE_STEP';
+var receive_steps = function receive_steps(steps) {
+  return {
+    type: RECEIVE_STEPS,
+    steps: steps
+  };
+};
+var receive_step = function receive_step(step) {
+  return {
+    type: RECEIVE_STEP,
+    step: step
+  };
+};
+var remove_step = function remove_step(id) {
+  return {
+    type: REMOVE_STEP,
+    id: id
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/todo_actions.js":
 /*!******************************************!*\
   !*** ./frontend/actions/todo_actions.js ***!
@@ -377,37 +416,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   !*** ./frontend/components/todos/todo_list_item.jsx ***!
   \******************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-var TodoListItem = function TodoListItem(_ref) {
-  var todo = _ref.todo,
-      deleteTodo = _ref.deleteTodo,
-      _onChange = _ref.onChange;
-  // Warning: do not put onChange method here. it will only render return below. it will not rerender the
-  // the global state, and hence todo on line 8 points to the unupdated todo.
-  // move onChange to parent component will force parent and its children to rerender
-  // this is advantage of using redux.
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "checkbox",
-    name: todo.title,
-    checked: todo.done,
-    onChange: function onChange(e) {
-      return _onChange(e, todo);
-    }
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, todo.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    onClick: function onClick() {
-      return deleteTodo(todo.id);
-    }
-  }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Delete")));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (TodoListItem);
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/tingtingjiang/Desktop/interview/js/practices/frontend/components/todos/todo_list_item.jsx: Support for the experimental syntax 'classProperties' isn't currently enabled (12:17):\n\n\u001b[0m \u001b[90m 10 | \u001b[39m    }\u001b[0m\n\u001b[0m \u001b[90m 11 | \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 12 | \u001b[39m    updateState \u001b[33m=\u001b[39m (e) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 13 | \u001b[39m        e\u001b[33m.\u001b[39mpreventDefault()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 14 | \u001b[39m        \u001b[36mreturn\u001b[39m (e) \u001b[33m=>\u001b[39m {\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msetState((prevstate) \u001b[33m=>\u001b[39m {\u001b[36mreturn\u001b[39m {detail\u001b[33m:\u001b[39m \u001b[33m!\u001b[39mprevstate}})}\u001b[0m\n\u001b[0m \u001b[90m 15 | \u001b[39m    }\u001b[33m;\u001b[39m\u001b[0m\n\nAdd @babel/plugin-proposal-class-properties (https://git.io/vb4SL) to the 'plugins' section of your Babel config to enable transformation.\n    at Object.raise (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:7013:17)\n    at Object.expectPlugin (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:8389:18)\n    at Object.parseClassProperty (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:11665:12)\n    at Object.pushClassProperty (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:11627:30)\n    at Object.parseClassMemberWithIsStatic (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:11560:14)\n    at Object.parseClassMember (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:11497:10)\n    at /Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:11452:14\n    at Object.withTopicForbiddingContext (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:10533:14)\n    at Object.parseClassBody (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:11429:10)\n    at Object.parseClass (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:11403:22)\n    at Object.parseStatementContent (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:10700:21)\n    at Object.parseStatement (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:10658:17)\n    at Object.parseBlockOrModuleBlockBody (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:11234:25)\n    at Object.parseBlockBody (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:11221:10)\n    at Object.parseTopLevel (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:10589:10)\n    at Object.parse (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:12192:10)\n    at parse (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/parser/lib/index.js:12243:38)\n    at parser (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/core/lib/parser/index.js:54:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/core/lib/transformation/normalize-file.js:93:38)\n    at normalizeFile.next (<anonymous>)\n    at run (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/core/lib/transformation/index.js:31:50)\n    at run.next (<anonymous>)\n    at Function.transform (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/@babel/core/lib/transform.js:27:41)\n    at transform.next (<anonymous>)\n    at step (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/gensync/index.js:254:32)\n    at /Users/tingtingjiang/Desktop/interview/js/practices/node_modules/gensync/index.js:266:13\n    at async.call.result.err.err (/Users/tingtingjiang/Desktop/interview/js/practices/node_modules/gensync/index.js:216:11)\n    at processTicksAndRejections (internal/process/task_queues.js:97:5)");
 
 /***/ }),
 
@@ -422,10 +433,13 @@ var TodoListItem = function TodoListItem(_ref) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _todos_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todos_reducer */ "./frontend/reducers/todos_reducer.js");
+/* harmony import */ var _steps_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./steps_reducer */ "./frontend/reducers/steps_reducer.js");
+
 
 
 var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  todos: _todos_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  todos: _todos_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  steps: _steps_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);
 
@@ -435,15 +449,90 @@ var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
 /*!****************************************!*\
   !*** ./frontend/reducers/selectors.js ***!
   \****************************************/
-/*! exports provided: allTodos */
+/*! exports provided: allTodos, stepsByTodoId */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "allTodos", function() { return allTodos; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "stepsByTodoId", function() { return stepsByTodoId; });
 var allTodos = function allTodos(state) {
   var keys = Object.keys(state);
   return Object.values(state.todos);
+};
+var stepsByTodoId = function stepsByTodoId(state, todoId) {
+  return Object.values(state.steps).filter(function (step) {
+    return step.todoId === todoId;
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/reducers/steps_reducer.js":
+/*!********************************************!*\
+  !*** ./frontend/reducers/steps_reducer.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_steps_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/steps_actions */ "./frontend/actions/steps_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var stepsReducer = function stepsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var nextState = {};
+
+  switch (action.type) {
+    case _actions_steps_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_STEPS"]:
+      nextState = Object.assign({}, state);
+      action.steps.forEach(function (step) {
+        return nextState[step.id] = step;
+      });
+      return nextState;
+
+    case _actions_steps_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_STEP"]:
+      nextState = Object.assign({}, state, _defineProperty({}, action.step.id, action.step));
+      return nextState;
+
+    case _actions_steps_actions__WEBPACK_IMPORTED_MODULE_0__["REMOVE_STEP"]:
+      nextState = Object.assign({}, state);
+      delete nextState[action.id];
+      return nextState;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (stepsReducer);
+var sample = {
+  todos: {
+    1: {
+      id: 1,
+      title: 'take a shower',
+      body: 'and be clean',
+      done: false
+    }
+  },
+  steps: {
+    1: {
+      // this is the step with id = 1
+      id: 1,
+      title: 'walk to store',
+      done: false,
+      todo_id: 1
+    },
+    2: {
+      // this is the step with id = 2
+      id: 2,
+      title: 'buy soap',
+      done: false,
+      todo_id: 1
+    }
+  }
 };
 
 /***/ }),
