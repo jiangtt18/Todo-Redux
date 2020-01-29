@@ -7,8 +7,8 @@ import {receiveStep} from "../../actions/steps_actions";
 const mapStateToProps = (state, ownProps) => {
     return (
         {
-            steps: stepsByTodoId(state.steps, ownProps.todoId),
-            todoId: ownProps.todoId,
+            steps: stepsByTodoId(state.steps, ownProps.todo.id),
+            todoId: ownProps.todo.id,
         }
     )
 };

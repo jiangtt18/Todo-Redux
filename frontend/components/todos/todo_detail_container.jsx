@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import TodoDetailView from './todo_detail_view';
+import TodoDetail from './todo_detail';
 
 import {deleteTodo} from '../../actions/todo_actions';
 import {receiveSteps} from "../../actions/steps_actions";
@@ -8,7 +8,7 @@ import {receiveSteps} from "../../actions/steps_actions";
 // first: dispatch; second: ownProps
 const mapDispatchToProps = (dispatch, ownProps) => {
     return({
-        removeTodo: () => dispatch(deleteTodo(ownProps.id)),
+        removeTodo: () => dispatch(deleteTodo(ownProps.todo.id)),
         receiveSteps: (steps) => dispatch(receiveSteps(steps)),
 
     })
@@ -17,4 +17,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
     null,
     mapDispatchToProps
-)(TodoDetailView)
+)(TodoDetail)

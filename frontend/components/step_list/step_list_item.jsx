@@ -1,14 +1,15 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-const StepListItem = ({step:{title, body, done}}) => {
+const StepListItem = (props) => {
+    const {step:{title, body, done}, removeStep, receiveStep} = props;
 
     const toggleStep = (e) => {
         const toggledStep = Object.assign(
             {},
-            this.props.step,
-            {done: !this.props.step.done}
+            props.step,
+            {done: !done}
         );
-        this.props.receiveStep(toggledStep)
+        receiveStep(toggledStep)
     };
 
     return(
@@ -16,11 +17,11 @@ const StepListItem = ({step:{title, body, done}}) => {
             <input
                 type='checkbox'
                 name={title}
-                checked={this.props.step.done}
+                checked={done}
                 onChange={(e) => {toggleStep(e)}}/>
             <h3>{title}</h3>
             <p>{body}</p>
-            <button onClick={this.props.removeStep}>Delete</button>
+            <button onClick={removeStep}>Delete</button>
         </li>
     )
 };

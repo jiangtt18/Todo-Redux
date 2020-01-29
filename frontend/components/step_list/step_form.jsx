@@ -8,7 +8,7 @@ class StepForm extends Component{
             title: "",
             body: "",
             done: false,
-            todo_id: this.props.todoId
+            todoId: this.props.todoId
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -39,11 +39,12 @@ class StepForm extends Component{
                         value={this.state.body}
                         onChange={this.update('body')}
                         required
-                    />>
+                    />
                 </label>
+                <button className="create-button">Create Step!</button>
             </form>
         )
     }
 };
 
-export export StepForm;
+export default StepForm;

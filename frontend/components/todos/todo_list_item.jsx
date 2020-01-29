@@ -1,32 +1,38 @@
 import React, {Component} from 'react';
-import TodoDetailView from './todo_detail_view'
+import TodoDetailContainer from './todo_detail_container'
 
 class TodoListItem extends Component {
     constructor(props){
         super(props);
         this.state = {
             detail: false,
-        }
+        };
+        this.updateState = this.updateState.bind(this)
     }
 
     updateState(e){
         e.preventDefault();
-        return (e) => {this.setState((prevstate) => {return {detail: !prevstate}})}
+        this.setState(prevstate => ({detail: !prevstate.detail}))
+    };
+
+    onChange(e){
+        // Note: do not use preventDefault. make checkbox unchecked
+        // e.preventDefault();
+        const {todo, receiveTodo} = this.props;
+        e.stopPropagation();
+        // do not use e.target.checked
+        let status = {done: !todo.done};
+        receiveTodo({...todo, ...status})
     };
 
     render(){
-        // Warning: do not put onChange method here. it will only render return below. it will not rerender the
-        // the global state, and hence todo on line 8 points to the unupdated todo.
-        // move onChange to parent component will force parent and its children to rerender
-        // this is advantage of using redux.
-        const {todo, deleteTodo, onChange} = this.props;
+        const {todo} = this.props;
         const {detail} = this.state;
         return (
             <div>
-                <span><input type='checkbox' name={todo.title} checked={todo.done} onChange={(e) => onChange(e, todo)}/></span>
-                <span onClick={this.updateState}>{todo.title}</span>
-                {/*{detail && <TodoDetailView />}*/}
-                <span onClick={() => deleteTodo(todo.id)}> <button>Delete</button></span>
+                <span><input type='checkbox' name={todo.title} checked={todo.done} onChange={(e) =>this.onChange(e)}/></span>
+                <span onClick={(e) => this.updateState(e)}>{todo.title}</span>
+                {detail && <TodoDetailContainer todo={todo}/>}
             </div>
         );
     }
